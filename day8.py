@@ -7,7 +7,7 @@ st.header('st.slider')
 
 st.subheader('Slider')
 
-age = st.slider('How old are you?', 0, 130, 25)
+age = st.slider('How old are you?', 0, 130, 58)
 st.write("I'm ", age, 'years old')
 
 # Example 2

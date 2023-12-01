@@ -4,6 +4,16 @@ from datetime import time, datetime
 import pandas as pd
 import numpy as np
 
+
+st.header('st.multiselect')
+
+options = st.multiselect(
+     'What are your favorite colors',
+     ['Green', 'Yellow', 'Red', 'Blue'],
+     ['Yellow', 'Red'])
+
+st.write('You selected:', options)
+
 st.header('Line chart')
 
 chart_data = pd.DataFrame(

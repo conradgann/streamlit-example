@@ -1,15 +1,44 @@
 import streamlit as st
-import time
 
-st.title('st.progress')
+st.title('st.form')
 
-with st.expander('About this app'):
-     st.write('You can now display the progress of your calculations in a Streamlit app with the `st.progress` command.')
+# Full example of using the with notation
+st.header('1. Example of using `with` notation')
+st.subheader('Coffee machine')
 
-my_bar = st.progress(0)
+with st.form('my_form'):
+    st.subheader('**Order your coffee**')
 
-for percent_complete in range(100):
-     time.sleep(0.05)
-     my_bar.progress(percent_complete + 1)
+    # Input widgets
+    coffee_bean_val = st.selectbox('Coffee bean', ['Arabica', 'Robusta'])
+    coffee_roast_val = st.selectbox('Coffee roast', ['Light', 'Medium', 'Dark'])
+    brewing_val = st.selectbox('Brewing method', ['Aeropress', 'Drip', 'French press', 'Moka pot', 'Siphon'])
+    serving_type_val = st.selectbox('Serving format', ['Hot', 'Iced', 'Frappe'])
+    milk_val = st.select_slider('Milk intensity', ['None', 'Low', 'Medium', 'High'])
+    owncup_val = st.checkbox('Bring own cup')
 
-st.balloons()
+    # Every form must have a submit button
+    submitted = st.form_submit_button('Submit')
+
+if submitted:
+    st.markdown(f'''
+        ☕ You have ordered:
+        - Coffee bean: `{coffee_bean_val}`
+        - Coffee roast: `{coffee_roast_val}`
+        - Brewing: `{brewing_val}`
+        - Serving type: `{serving_type_val}`
+        - Milk: `{milk_val}`
+        - Bring own cup: `{owncup_val}`
+        ''')
+else:
+    st.write('☝️ Place your order!')
+
+
+# Short example of using an object notation
+st.header('2. Example of object notation')
+
+form = st.form('my_form_2')
+selected_val = form.slider('Select a value')
+form.form_submit_button('Submit')
+
+st.write('Selected value: ', selected_val)
